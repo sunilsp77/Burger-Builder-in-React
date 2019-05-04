@@ -5,7 +5,6 @@ import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
-import { throwStatement } from '@babel/types';
 
 const INGREDIENT_PRICES = {
   salad: 0.5,
@@ -99,6 +98,7 @@ class BurgerBuilder extends Component {
           modalClosed={this.purchaseCancelHandler}
         >
           <OrderSummary
+            price={this.state.totalPrice}
             purchaseCancel={this.purchaseCancelHandler}
             purchaseContinue={this.purchaseContinueHandler}
             ingredients={this.state.ingredients}
