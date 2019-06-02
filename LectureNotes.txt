@@ -1,0 +1,15 @@
+Arrays and objects are references
+
+How do we achieve a build workflow?
+1. we need a dependency management tool like npm or yarn because 
+   we are gona have so many dependencies like React, React DOM, and many more
+2. we need a bundler like webpack, because we need to write modular code split up into multiple files
+    but when we ship it , we wana bundle them together.
+3. we need a compiler for compiling next gen JavaScript features. Babel
+4. we need a development server to test our application locally on our machine.
+
+public folder is the root folder which gets served by the web server
+
+JSX restrictions
+1. Some reserved words cannot be used like class, we have to use className 
+2. Our JSX expression must have one root element per component - cannot return adjacent elements
