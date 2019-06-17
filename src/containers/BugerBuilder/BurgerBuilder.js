@@ -14,21 +14,9 @@ import * as burgerBuilderActions from '../../store/actions/index';
 class BurgerBuilder extends Component {
   state = {
     purchasing: false,
-    loading: false,
-    error: false,
   };
 
-  componentDidMount() {
-    // axios
-    //   .get('https://react-my-burger-6ca3c.firebaseio.com/ingredients.json')
-    //   .then(response => {
-    //     console.log(response.data);
-    //     this.setState({ ingredients: response.data });
-    //   })
-    //   .catch(error => {
-    //     this.setState({ error: true });
-    //   });
-  }
+  componentDidMount() {}
   updatePurchaseState(ingredients) {
     const sum = Object.keys(ingredients)
       .map(igkey => {
@@ -88,10 +76,6 @@ class BurgerBuilder extends Component {
           ingredients={this.props.ings}
         />
       );
-    }
-
-    if (this.state.loading) {
-      orderSummary = <Spinner />;
     }
 
     return (
