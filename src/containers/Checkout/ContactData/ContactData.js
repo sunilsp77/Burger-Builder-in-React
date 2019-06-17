@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 
 import Button from '../../../components/UI/Button/Button';
 import classes from './ContactData.module.css';
+import axios from '../../../axios-orders';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
 import { connect } from 'react-redux';
+import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
+import * as actions from '../../../store/actions/index';
 
 class ContactData extends Component {
   state = {
@@ -102,6 +105,13 @@ class ContactData extends Component {
         formElementIdentifier
       ].value;
     }
+    const order = {
+      ingredients: this.props.ings,
+      price: this.props.price,
+      orderData: formData,
+    };
+
+    this.props.onOrderBurger(order);
   };
 
   checkValidity(value, rules) {
@@ -193,4 +203,15 @@ const mapStateToProps = state => {
     price: state.totalPrice,
   };
 };
-export default connect(mapStateToProps)(ContactData);
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onOrderBurger: orderData =>
+      dispatch(actions.purchaseBurgerstart(orderData)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(withErrorHandler(ContactData, axios));
